@@ -1,36 +1,263 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Kofi Aroma ☕
 
-## Getting Started
+> Uma plataforma pessoal para entusiastas de café especial registrarem, lembrarem e entenderem suas experiências com café.
 
-First, run the development server:
+## Sobre o projeto
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Kofi Aroma é um produto B2C voltado inicialmente para o seguinte ICP:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Entusiasta de café especial que prepara café em casa.**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A proposta é transformar o registro de experiências com café em algo simples e útil ao longo do tempo.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+O produto não busca apenas armazenar informações sobre cafés. A ideia central é ajudar o usuário a:
 
-## Learn More
+- registrar cafés experimentados;
+- registrar experiências de preparo;
+- lembrar dos cafés que já experimentou;
+- identificar padrões de preferência;
+- compreender melhor o próprio paladar;
+- receber insights personalizados a partir do próprio histórico.
 
-To learn more about Next.js, take a look at the following resources:
+## Proposta do produto
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O Kofi Aroma parte de três ações principais:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Registrar → Lembrar → Entender**
 
-## Deploy on Vercel
+O produto utiliza os dados e comportamentos registrados pelo próprio usuário para construir uma camada de personalização.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Essa personalização será inicialmente baseada em **regras, comportamentos e dados estruturados**, sem depender obrigatoriamente de uma API externa de inteligência artificial.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## ICP inicial
+
+### Entusiasta de café especial que prepara café em casa
+
+É o usuário que:
+
+- gosta de café especial;
+- prepara café em casa;
+- experimenta diferentes cafés;
+- presta atenção em métodos e características;
+- possui interesse em entender melhor suas próprias preferências;
+- pode ter dificuldade para lembrar quais cafés já experimentou e como foi cada experiência.
+
+## MVP
+
+O MVP será centrado em quatro pilares:
+
+### 1. Coffee
+
+Registro dos cafés experimentados pelo usuário.
+
+### 2. Experience
+
+Registro da experiência do usuário com determinado café e preparo.
+
+### 3. Taste
+
+Construção progressiva do perfil de paladar do usuário a partir das experiências registradas.
+
+### 4. Personalization
+
+Motor de personalização baseado inicialmente em regras e comportamento.
+
+O objetivo é transformar os dados registrados em informações úteis para o próprio usuário.
+
+## Personalization Engine
+
+O Personalization Engine será uma camada de regras responsável por interpretar os dados existentes no sistema.
+
+Exemplos futuros:
+
+- identificar características recorrentes nos cafés bem avaliados;
+- identificar métodos mais utilizados;
+- encontrar padrões de preferência;
+- gerar recomendações baseadas no histórico;
+- produzir insights personalizados.
+
+A primeira versão não depende necessariamente de inteligência artificial generativa.
+
+A lógica será construída dentro do próprio sistema e poderá evoluir posteriormente.
+
+## Newsletter
+
+O produto poderá possuir uma newsletter como recurso de um plano superior.
+
+A newsletter será enviada por e-mail e poderá utilizar os dados e comportamentos registrados pelo usuário para produzir conteúdo personalizado relacionado à sua jornada com café.
+
+## Arquitetura
+
+O projeto utiliza uma arquitetura organizada por responsabilidades.
+
+```text
+src/
+├── app/
+├── application/
+├── components/
+├── domain/
+├── infrastructure/
+├── lib/
+└── types/
+Camadas
+app
+
+Responsável pela aplicação Next.js, rotas e composição das páginas.
+
+components
+
+Componentes de interface reutilizáveis.
+
+application
+
+Casos de uso e orquestração das operações da aplicação.
+
+domain
+
+Regras e conceitos centrais do negócio.
+
+domain/
+├── coffee/
+├── experience/
+├── personalization/
+└── taste/
+infrastructure
+
+Implementações relacionadas a recursos externos.
+
+infrastructure/
+├── auth/
+├── database/
+├── repositories/
+└── storage/
+lib
+##
+Bibliotecas auxiliares, validações e configurações.
+
+types
+
+Tipos compartilhados quando necessário.
+
+Frontend
+
+O projeto utiliza:
+
+Next.js
+React
+TypeScript
+Tailwind CSS
+
+A aplicação será construída priorizando componentes leves e mantendo lógica complexa fora da camada visual sempre que possível.
+
+Backend / Data
+
+O projeto utiliza:
+
+Supabase
+PostgreSQL
+Prisma ORM
+
+O Supabase será utilizado como infraestrutura para o banco PostgreSQL e demais serviços que forem necessários.
+
+O Prisma será responsável pela camada de acesso e modelagem do banco dentro da aplicação.
+
+Tecnologias
+Tecnologia	Função
+Next.js	Framework principal
+React	Interface
+TypeScript	Tipagem
+Tailwind CSS	Estilização
+Supabase	Backend / PostgreSQL / serviços
+PostgreSQL	Banco de dados
+Prisma	ORM
+Zod	Validação
+React Hook Form	Formulários
+Estrutura atual
+kofi-aroma/
+│
+├── prisma/
+│   └── schema.prisma
+│
+├── src/
+│   ├── app/
+│   ├── application/
+│   │   ├── coffee/
+│   │   ├── experience/
+│   │   ├── insight/
+│   │   └── profile/
+│   │
+│   ├── components/
+│   │   ├── coffee/
+│   │   ├── experience/
+│   │   ├── profile/
+│   │   └── ui/
+│   │
+│   ├── domain/
+│   │   ├── coffee/
+│   │   ├── experience/
+│   │   ├── personalization/
+│   │   └── taste/
+│   │
+│   ├── infrastructure/
+│   │   ├── auth/
+│   │   ├── database/
+│   │   ├── repositories/
+│   │   └── storage/
+│   │
+│   ├── lib/
+│   │   ├── supabase/
+│   │   ├── utils/
+│   │   └── validation/
+│   │
+│   └── types/
+│
+├── prisma.config.ts
+├── .env
+├── package.json
+└── README.md
+Estado do projeto
+Concluído
+ Definição do nicho
+ Definição do ICP inicial
+ Jornada do ICP
+ Product Brief
+ MVP inicial
+ Domain Model
+ Personalization Engine
+ ERD / Database Model v0
+ API Contract
+ Technical Stack
+ Criação do projeto Next.js
+ Estrutura inicial da arquitetura
+ Instalação das dependências
+ Projeto Supabase criado
+ Prisma 7.10.0 configurado
+ Prisma Client configurado
+ Prisma Client gerado
+Próximos passos
+ Finalizar conexão Prisma ↔ Supabase PostgreSQL
+ Criar configuração do Prisma Client
+ Transformar o ERD v0 em schema.prisma
+ Criar primeira migration
+ Configurar Supabase Auth
+ Configurar RLS
+ Implementar repositories
+ Implementar primeiros casos de uso
+ Construir primeiras telas do MVP
+Princípios técnicos
+
+O projeto seguirá alguns princípios:
+
+Manter a lógica de negócio fora dos componentes de UI.
+Evitar lógica complexa desnecessária no frontend.
+Centralizar acesso a dados na camada de infraestrutura.
+Manter o domínio independente de tecnologias específicas.
+Utilizar o backend para processamento e regras mais complexas.
+Construir o Personalization Engine de forma incremental.
+Priorizar simplicidade no MVP.
+Evoluir a arquitetura conforme necessidades reais do produto.
+Status
+
+Em desenvolvimento — Bootstrap inicial
+
+Kofi Aroma está atualmente na etapa de configuração da infraestrutura e preparação para implementação do MVP.
